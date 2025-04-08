@@ -1,0 +1,69 @@
+[keyboard]
+name = "rmk-planck-split"
+product_name = "rmk-planck-split"
+vendor_id = 0x4c4b
+product_id = 0x4643
+manufacturer = "lemon"
+chip = "nrf52840"
+
+[layout]
+# WARNING: Currently row2col/col2row is set in RMK's feature gate, configs here do nothing actually
+# row2col = true
+rows = 4
+cols = 12
+layers = 4
+keymap = [
+    [
+        ["Tab", "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "Backspace"],
+        ["Escape", "A", "S", "D", "F", "G", "H", "J", "K", "L", "Semicolon", "Quote"],
+        ["LShift", "Z", "X", "C", "V", "B", "N", "M", "Comma", "Dot", "Slash", "MT(Enter, RShift)"],
+        ["MT(CapsLock, RShift)", "LCtrl", "LAlt", "LGui", "MO(1)", "Space", "Space", "MO(2)", "Left", "Down", "Up", "Right"]
+    ],
+    [
+        ["WM(Grave, LShift)", "WM(Kc1, LShift)", "WM(Kc2, LShift)", "WM(Kc3, LShift)", "WM(Kc4, LShift)", "WM(Kc5, LShift)", "WM(Kc6, LShift)", "WM(Kc7, LShift)", "WM(Kc8, LShift)", "WM(Kc9, LShift)", "WM(Kc0, LShift)", "_"],
+        ["Delete", "F1", "F2", "F3", "F4", "F5", "F6", "WM(Minus, LShift)", "WM(Equal, LShift)", "WM(LeftBracket, LShift)", "WM(RightBracket, LShift)", "WM(Backslash, LShift)"],
+        ["_", "F7", "F8", "F9", "F10", "F11", "F12", "WM(NonusHash, LShift)", "WM(NonusBackslash, LShift)", "Home", "End", "_"],
+        ["_", "_", "_", "_", "_", "_", "_", "_", "MediaNextTrack", "AudioVolDown", "AudioVolUp", "MediaPlayPause"]
+    ],
+    [
+        ["Grave", "Kc1", "Kc2", "Kc3", "Kc4", "Kc5", "Kc6", "Kc7", "Kc8", "Kc9", "Kc0", "_"],
+        ["Delete", "F1", "F2", "F3", "F4", "F5", "F6", "Minus", "Equal", "LeftBracket", "RightBracket", "Backslash"],
+        ["_", "F7", "F8", "F9", "F10", "F11", "F12", "NonusHash", "NonusBackslash", "PageDown", "PageUp", "_"],
+        ["_", "_", "_", "_", "_", "_", "_", "_", "MediaNextTrack", "AudioVolDown", "AudioVolUp", "MediaPlayPause"]
+    ],
+    [
+	["User10", "User0", "User1", "User2", "User3", "User4", "User5", "User6", "User7", "User8", "User9", "User11"],
+	["_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_"],
+	["_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_"],
+	["_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_"]
+    ],
+]
+
+[ble]
+enabled = true
+
+[behavior]
+tap_hold = { enable_hrm = false, hold_timeout = "200ms" }
+
+[split]
+connection = "ble"
+
+[split.central]
+rows = 4
+cols = 6
+row_offset = 0
+col_offset = 0
+ble_addr = [0x18, 0xe2, 0x21, 0x80, 0xc0, 0xc7]
+[split.central.matrix]
+input_pins = ["P0_17", "P0_20", "P1_11", "P1_13"]
+output_pins = ["P0_22", "P0_24", "P1_00", "P0_11", "P1_04", "P1_06" ]
+
+[[split.peripheral]]
+rows = 4
+cols = 6
+row_offset = 0
+col_offset = 6
+ble_addr = [0x7e, 0xfe, 0x73, 0x9e, 0x66, 0xe3]
+[split.peripheral.matrix]
+input_pins = ["P0_17", "P0_20", "P1_11", "P1_13"]
+output_pins = ["P0_22", "P0_24", "P1_00", "P0_11", "P1_04", "P1_06" ]
