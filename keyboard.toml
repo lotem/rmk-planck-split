@@ -87,9 +87,14 @@ _ _ _ _ _ _ _ _ _ _ _ _
 _ _ _ _ _ _ _ _ _ _ _ _
 """
 
-[behavior]
-tri_layer = { upper = 1, lower = 2, adjust = 3 }
-one_shot = { timeout = "1s" }
+[behavior.tri_layer]
+upper = 1
+lower = 2
+adjust = 3
+
+[behavior.morse]
+enable_flow_tap = true
+hold_on_other_press = true
 
 [ble]
 enabled = true
@@ -104,8 +109,8 @@ row_offset = 0
 col_offset = 0
 
 [split.central.matrix]
-input_pins = ["P0_17", "P0_20", "P1_11", "P1_13"]
-output_pins = ["P0_22", "P0_24", "P1_00", "P0_11", "P1_04", "P1_06" ]
+row_pins = ["P0_17", "P0_20", "P1_11", "P1_13"]
+col_pins = ["P0_22", "P0_24", "P1_00", "P0_11", "P1_04", "P1_06" ]
 
 [[split.peripheral]]
 rows = 4
@@ -114,5 +119,5 @@ row_offset = 0
 col_offset = 6
 
 [split.peripheral.matrix]
-input_pins = ["P0_17", "P0_20", "P1_11", "P1_13"]
-output_pins = ["P0_22", "P0_24", "P1_00", "P0_11", "P1_04", "P1_06" ]
+row_pins = ["P0_17", "P0_20", "P1_11", "P1_13"]
+col_pins = ["P0_22", "P0_24", "P1_00", "P0_11", "P1_04", "P1_06" ]
